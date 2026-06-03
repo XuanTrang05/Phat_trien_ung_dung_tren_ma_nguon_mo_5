@@ -39,3 +39,8 @@ bt5:
 =========
 quá trình làm: chụp ảnh lại, mô tả cho ảnh
   lưu vào trong github => paste link access public của repo: vào file excel online
+
+## BÀI LÀM
+# LÝ THUYẾT
+# THỰC HÀNH ÁP DỤNG : APP MONITOR + ALERT DATA REALTIME
+- Tạo thư mục monitor
