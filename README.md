@@ -262,7 +262,7 @@ Sau khi bấm Add, node InfluxDB Out thường sẽ hiện thêm: điền:
 
 - test bot
 truy cập https://api.telegram.org/botTOKEN_BOT/getMe
-<img width="853" height="495" alt="image" src="https://github.com/user-attachments/assets/fa26654a-c456-4b41-846c-35478fadbd56" />
+
 
 
 
