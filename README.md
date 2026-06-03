@@ -261,7 +261,7 @@ Sau khi bấm Add, node InfluxDB Out thường sẽ hiện thêm: điền:
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/530c3d67-75d6-47f1-8efd-9e51da7fd8ea" />
 
 - test bot
-truy cập https://api.telegram.org/bot8861635868:AAGkMTSJ-mnag_f4DutFUNibgmgeUNWZDcw/getMe
+truy cập https://api.telegram.org/botTOKEN_BOT/getMe
 <img width="853" height="495" alt="image" src="https://github.com/user-attachments/assets/fa26654a-c456-4b41-846c-35478fadbd56" />
 
 
