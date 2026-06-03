@@ -249,12 +249,20 @@ Sau khi bấm Add, node InfluxDB Out thường sẽ hiện thêm: điền:
 
 <img width="1141" height="594" alt="image" src="https://github.com/user-attachments/assets/4cb43adf-562a-4a27-8324-a65042ad8698" />
 
+10. KÉO SWITCH ->  Nối: GetTemp với Switch -> cấu hình
+<img width="679" height="905" alt="image" src="https://github.com/user-attachments/assets/393c014c-1c0e-4b0d-af5c-ac6e9c5a92e7" />
 
+11. KÉO FUNCTION ALERT : kéo Function -> đổi tên thành Function Alert ->  Nối cả 2 output của Switch vào Function này-> code -> done
+<img width="682" height="842" alt="image" src="https://github.com/user-attachments/assets/a05fcf45-f7bc-4043-b85e-105efea63ec3" />
 
+12. KÉO TELEGRAM SENDER : Kéo: telegram sender Nối: Function Alert với Telegram Sender -> Cấu hình -> done -> deploy
+<img width="747" height="905" alt="BCBCBCBCBC" src="https://github.com/user-attachments/assets/79a9bebc-6a21-4c80-a832-e68693aa7751" />
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/530c3d67-75d6-47f1-8efd-9e51da7fd8ea" />
 
-
-
+- test bot
+truy cập https://api.telegram.org/bot8861635868:AAGkMTSJ-mnag_f4DutFUNibgmgeUNWZDcw/getMe
+<img width="853" height="495" alt="image" src="https://github.com/user-attachments/assets/fa26654a-c456-4b41-846c-35478fadbd56" />
 
 
 
