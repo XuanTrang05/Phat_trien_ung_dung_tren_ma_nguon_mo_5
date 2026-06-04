@@ -287,7 +287,17 @@ Vì nhiệt độ đã cấu hình ở Switch hiện tại đang ở mức bình
   > - Nhấn Add data source
   > - Chọn InfluxDB
 
+<img width="954" height="974" alt="image" src="https://github.com/user-attachments/assets/28b5c14d-ab58-49d1-8b73-ac7858d05a63" />
+Điền vào Grafana
+Sau khi nhấn vào InfluxDB → Add new data source, điền:
+Query Language: Flux
+URL: http://influxdb:8086
+<img width="954" height="974" alt="image" src="https://github.com/user-attachments/assets/7f4edbd3-034f-425d-bccf-7a114056b9b3" />
+- Data source đã kết nối thành công!
+Bây giờ tạo Dashboard:
+Menu trái → Dashboards → New → New dashboard → Nhấn Add visualization → Chọn data source InfluxDB vừa tạo
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a07fd3aa-67f5-41ba-b3be-af7929c432a2" />
 
 
 
