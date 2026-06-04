@@ -302,6 +302,9 @@ Menu trái → Dashboards → New → New dashboard → Nhấn Add visualization
 
 
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/cd4d6ea3-d768-4047-a040-ccec74d73653" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f57cc755-2117-42b2-a20e-d989c4ae0a45" />
 
 
 
