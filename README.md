@@ -256,6 +256,7 @@ Sau khi bấm Add, node InfluxDB Out thường sẽ hiện thêm: điền:
 <img width="695" height="913" alt="nudjidvn" src="https://github.com/user-attachments/assets/c33cb447-f75b-41d5-9921-fa7aed9fd296" />
 
 12. KÉO TELEGRAM SENDER : Kéo: telegram sender Nối: Function Alert với Telegram Sender -> Cấu hình -> done -> deploy
+  > - ( để lấy id nhóm chat ta truy cập vào telegram -> tìm @userinfobot -> nhấn start -> ấn group/ hoặc my group sau đó tìm nhóm chat cần lấy id )
 <img width="758" height="900" alt="vdhjbeh" src="https://github.com/user-attachments/assets/d35b61cc-5b0d-4abb-b9bf-567c37214632" />
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/530c3d67-75d6-47f1-8efd-9e51da7fd8ea" />
@@ -272,12 +273,12 @@ Vì nhiệt độ đã cấu hình ở Switch hiện tại đang ở mức bình
 
 # KẾT QUẢ SAU KHI LÀM XONG PHẦN NODE-RED
 - Ta sẽ có:
-✓ Open-Meteo lấy dữ liệu thật
-✓ Node-RED lấy nhiệt độ mỗi 60 giây
-✓ Ghi MariaDB
-✓ Chuẩn bị ghi InfluxDB
-✓ Kiểm tra ngưỡng
-✓ Gửi Telegram khi vượt ngưỡng
+  ✓ Open-Meteo lấy dữ liệu thật
+  ✓ Node-RED lấy nhiệt độ mỗi 60 giây
+  ✓ Ghi MariaDB
+  ✓ Chuẩn bị ghi InfluxDB
+  ✓ Kiểm tra ngưỡng
+  ✓ Gửi Telegram khi vượt ngưỡng
 
 
 
