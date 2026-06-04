@@ -273,12 +273,20 @@ Vì nhiệt độ đã cấu hình ở Switch hiện tại đang ở mức bình
 
 # KẾT QUẢ SAU KHI LÀM XONG PHẦN NODE-RED
 - Ta sẽ có:
-  ✓ Open-Meteo lấy dữ liệu thật
-  ✓ Node-RED lấy nhiệt độ mỗi 60 giây
-  ✓ Ghi MariaDB
-  ✓ Chuẩn bị ghi InfluxDB
-  ✓ Kiểm tra ngưỡng
-  ✓ Gửi Telegram khi vượt ngưỡng
+> -  ✓ Open-Meteo lấy dữ liệu thật
+> -  ✓ Node-RED lấy nhiệt độ mỗi 60 giây
+> -  ✓ Ghi MariaDB
+> -  ✓ Chuẩn bị ghi InfluxDB
+> -  ✓ Kiểm tra ngưỡng
+> -  ✓ Gửi Telegram khi vượt ngưỡng
+
+#  Grafana — vẽ biểu đồ từ InfluxDB
+- Vào trình duyệt: http://192.168.18.128:3000
+- Thêm Data Source InfluxDB
+  > - Menu trái → Connections → Data sources
+  > - Nhấn Add data source
+  > - Chọn InfluxDB
+
 
 
 
