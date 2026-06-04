@@ -250,19 +250,34 @@ Sau khi bấm Add, node InfluxDB Out thường sẽ hiện thêm: điền:
 <img width="1141" height="594" alt="image" src="https://github.com/user-attachments/assets/4cb43adf-562a-4a27-8324-a65042ad8698" />
 
 10. KÉO SWITCH ->  Nối: GetTemp với Switch -> cấu hình
-<img width="679" height="905" alt="image" src="https://github.com/user-attachments/assets/393c014c-1c0e-4b0d-af5c-ac6e9c5a92e7" />
+<img width="756" height="904" alt="image" src="https://github.com/user-attachments/assets/601a5ab0-6cce-49c3-88a5-499daf67f286" />
 
 11. KÉO FUNCTION ALERT : kéo Function -> đổi tên thành Function Alert ->  Nối cả 2 output của Switch vào Function này-> code -> done
-<img width="682" height="842" alt="image" src="https://github.com/user-attachments/assets/a05fcf45-f7bc-4043-b85e-105efea63ec3" />
+<img width="695" height="913" alt="nudjidvn" src="https://github.com/user-attachments/assets/c33cb447-f75b-41d5-9921-fa7aed9fd296" />
 
 12. KÉO TELEGRAM SENDER : Kéo: telegram sender Nối: Function Alert với Telegram Sender -> Cấu hình -> done -> deploy
-<img width="747" height="905" alt="BCBCBCBCBC" src="https://github.com/user-attachments/assets/79a9bebc-6a21-4c80-a832-e68693aa7751" />
+<img width="758" height="900" alt="vdhjbeh" src="https://github.com/user-attachments/assets/d35b61cc-5b0d-4abb-b9bf-567c37214632" />
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/530c3d67-75d6-47f1-8efd-9e51da7fd8ea" />
 
-- test bot
-truy cập https://api.telegram.org/botTOKEN_BOT/getMe
+- test bot telegrem xem có hoạt động hay không
+Vì nhiệt độ đã cấu hình ở Switch hiện tại đang ở mức bình thường (từ 20-35°C), nên cả 2 điều kiện đều không thỏa:
+< 20 → nhiệt độ không dưới 20 → không gửi
+> 35 → nhiệt độ không trên 35 → không gửi
+Đây là hoạt động ĐÚNG! Switch chỉ gửi cảnh báo khi nhiệt độ thực sự bất thường.
+Để test thử có thể đổi tạm thành > 20 rồi inject → sẽ gửi tin. Sau đó đổi lại > 35 như cũ là xong.
+<img width="685" height="762" alt="image" src="https://github.com/user-attachments/assets/5be7f6e4-6a0a-4ad6-a0c6-7e237eba7df3" />
+- khi đó bot sẽ gửi tin nhắn cảnh báo nhiệt độ cao -> Hệ thống của bạn hoạt động hoàn toàn bình thường!
+<img width="1179" height="2556" alt="image" src="https://github.com/user-attachments/assets/ffa36119-44e5-488e-8b11-e04bac592dab" />
 
+# KẾT QUẢ SAU KHI LÀM XONG PHẦN NODE-RED
+- Ta sẽ có:
+✓ Open-Meteo lấy dữ liệu thật
+✓ Node-RED lấy nhiệt độ mỗi 60 giây
+✓ Ghi MariaDB
+✓ Chuẩn bị ghi InfluxDB
+✓ Kiểm tra ngưỡng
+✓ Gửi Telegram khi vượt ngưỡng
 
 
 
