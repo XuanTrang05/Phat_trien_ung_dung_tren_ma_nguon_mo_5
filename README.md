@@ -42,6 +42,510 @@ quá trình làm: chụp ảnh lại, mô tả cho ảnh
 
 ## BÀI LÀM
 # LÝ THUYẾT
+# Docker - Lý Thuyết Cơ Bản
+
+## 1. Docker là gì?
+
+Docker là một nền tảng mã nguồn mở giúp đóng gói ứng dụng và toàn bộ môi trường chạy của nó vào các **Container**.
+
+Container chứa:
+
+- Source code
+- Thư viện (Libraries)
+- Dependencies
+- Cấu hình hệ thống
+- Runtime Environment
+
+Nhờ đó ứng dụng có thể chạy giống nhau trên mọi môi trường như:
+
+- Máy cá nhân (Laptop)
+- Máy chủ (Server)
+- Cloud
+
+### Các khái niệm cơ bản
+
+#### Docker Image
+
+Là một bản mẫu (template) dùng để tạo Container.
+
+Ví dụ:
+
+```bash
+docker pull nginx
+```
+
+#### Docker Container
+
+Là một Image đang được thực thi.
+
+Ví dụ:
+
+```bash
+docker run nginx
+```
+
+#### Dockerfile
+
+Là file chứa các lệnh dùng để tạo Docker Image.
+
+Ví dụ:
+
+```dockerfile
+FROM node:20
+
+WORKDIR /app
+
+COPY . .
+
+RUN npm install
+
+CMD ["npm", "start"]
+```
+
+#### Docker Compose
+
+Docker Compose giúp quản lý nhiều Container trong cùng một ứng dụng.
+
+Ví dụ:
+
+- Web Server
+- Database
+- Redis
+
+được cấu hình trong một file:
+
+```bash
+docker-compose.yml
+```
+
+---
+
+# 2. Các keyword thường dùng trong docker-compose.yml
+
+## version
+
+Xác định phiên bản Docker Compose.
+
+```yaml
+version: "3.9"
+```
+
+---
+
+## services
+
+Định nghĩa các service của hệ thống.
+
+```yaml
+services:
+  web:
+    image: nginx
+```
+
+---
+
+## image
+
+Chỉ định Image sử dụng.
+
+```yaml
+image: nginx:latest
+```
+
+---
+
+## build
+
+Build Image từ Dockerfile.
+
+```yaml
+build: .
+```
+
+Hoặc:
+
+```yaml
+build:
+  context: .
+  dockerfile: Dockerfile
+```
+
+---
+
+## container_name
+
+Đặt tên cho Container.
+
+```yaml
+container_name: my-nginx
+```
+
+---
+
+## ports
+
+Mapping cổng giữa Host và Container.
+
+```yaml
+ports:
+  - "8080:80"
+```
+
+Ý nghĩa:
+
+```text
+Host      Container
+8080  --> 80
+```
+
+---
+
+## environment
+
+Khai báo biến môi trường.
+
+```yaml
+environment:
+  MYSQL_ROOT_PASSWORD: 123456
+```
+
+---
+
+## volumes
+
+Gắn dữ liệu giữa Host và Container.
+
+```yaml
+volumes:
+  - ./data:/var/lib/mysql
+```
+
+Ý nghĩa:
+
+```text
+Host             Container
+./data      -->  /var/lib/mysql
+```
+
+---
+
+## depends_on
+
+Khai báo service phụ thuộc.
+
+```yaml
+depends_on:
+  - mysql
+```
+
+Docker sẽ khởi động mysql trước service hiện tại.
+
+---
+
+## restart
+
+Chính sách khởi động lại Container.
+
+```yaml
+restart: always
+```
+
+Các giá trị thường dùng:
+
+```text
+no
+always
+unless-stopped
+on-failure
+```
+
+---
+
+## command
+
+Ghi đè lệnh mặc định của Container.
+
+```yaml
+command: npm start
+```
+
+---
+
+## networks
+
+Khai báo mạng cho Container.
+
+```yaml
+networks:
+  - backend
+```
+
+---
+
+## volumes (cấp cao)
+
+Khai báo Volume dùng chung.
+
+```yaml
+volumes:
+  mysql_data:
+```
+
+---
+
+## networks (cấp cao)
+
+Khai báo Network dùng chung.
+
+```yaml
+networks:
+  backend:
+```
+
+---
+
+# 3. Ví dụ docker-compose.yml hoàn chỉnh
+
+```yaml
+version: "3.9"
+
+services:
+
+  web:
+    build: .
+    container_name: web-app
+
+    ports:
+      - "8080:80"
+
+    depends_on:
+      - mysql
+
+    networks:
+      - backend
+
+  mysql:
+    image: mysql:8
+
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    networks:
+      - backend
+
+volumes:
+  mysql_data:
+
+networks:
+  backend:
+```
+
+---
+
+# 4. Ưu điểm khi triển khai ứng dụng bằng Docker
+
+## 4.1 Môi trường nhất quán
+
+Ứng dụng chạy giống nhau trên:
+
+- Laptop
+- Server
+- Cloud
+
+Giảm lỗi:
+
+```text
+Works on my machine
+```
+
+---
+
+## 4.2 Triển khai nhanh
+
+Chỉ cần:
+
+```bash
+docker compose up -d
+```
+
+là toàn bộ hệ thống hoạt động.
+
+---
+
+## 4.3 Tiết kiệm tài nguyên
+
+Container không cần cài đặt hệ điều hành riêng như máy ảo (VM).
+
+Ưu điểm:
+
+- Khởi động nhanh
+- Tốn ít RAM
+- Tốn ít CPU
+
+---
+
+## 4.4 Dễ mở rộng
+
+Có thể chạy nhiều Container cùng lúc:
+
+```text
+web-1
+web-2
+web-3
+```
+
+để cân bằng tải.
+
+---
+
+## 4.5 Dễ sao lưu và di chuyển
+
+Chỉ cần mang theo:
+
+- Dockerfile
+- docker-compose.yml
+- Docker Image
+
+là có thể chạy trên máy khác.
+
+---
+
+## 4.6 Quản lý phiên bản dễ dàng
+
+Ví dụ:
+
+```text
+myapp:v1
+myapp:v2
+myapp:v3
+```
+
+Có thể rollback nhanh khi gặp lỗi.
+
+---
+
+# 5. Triển khai ứng dụng Docker lên máy chủ không có Internet
+
+## Bước 1: Build Docker Image trên máy cá nhân
+
+```bash
+docker build -t myapp:v1 .
+```
+
+Kiểm tra:
+
+```bash
+docker images
+```
+
+---
+
+## Bước 2: Export Docker Image
+
+```bash
+docker save -o myapp.tar myapp:v1
+```
+
+Kết quả:
+
+```text
+myapp.tar
+```
+
+---
+
+## Bước 3: Copy sang máy chủ
+
+Sử dụng:
+
+- USB
+- Ổ cứng di động
+- Mạng LAN
+
+Copy các file:
+
+```text
+myapp.tar
+docker-compose.yml
+.env
+```
+
+---
+
+## Bước 4: Import Image trên Server
+
+```bash
+docker load -i myapp.tar
+```
+
+Kiểm tra:
+
+```bash
+docker images
+```
+
+---
+
+## Bước 5: Chạy ứng dụng
+
+Nếu chạy trực tiếp:
+
+```bash
+docker run -d -p 80:80 myapp:v1
+```
+
+Nếu sử dụng Docker Compose:
+
+```bash
+docker compose up -d
+```
+
+---
+
+## Bước 6: Kiểm tra trạng thái
+
+Xem Container đang chạy:
+
+```bash
+docker ps
+```
+
+Xem log:
+
+```bash
+docker logs <container_name>
+```
+
+---
+
+# Quy Trình Tổng Quát
+
+```text
+Laptop Developer
+      │
+      │ docker build
+      ▼
+ Docker Image
+      │
+      │ docker save
+      ▼
+   myapp.tar
+      │
+      │ USB / LAN
+      ▼
+ Server Offline
+      │
+      │ docker load
+      ▼
+ Docker Image
+      │
+      │ docker compose up -d
+      ▼
+Ứng dụng hoạt động
+```
 # THỰC HÀNH ÁP DỤNG : APP MONITOR + ALERT DATA REALTIME
 - Tạo thư mục monitor: 
 mkdir ~/monitor
