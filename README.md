@@ -306,11 +306,66 @@ Menu trái → Dashboards → New → New dashboard → Nhấn Add visualization
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f57cc755-2117-42b2-a20e-d989c4ae0a45" />
 
+# Tạo thư mục frontend
+- Tạo thư mục: mkdir -p nginx/html
+
+<img width="692" height="132" alt="image" src="https://github.com/user-attachments/assets/76cf6920-db96-498d-b8f9-d6ae91efdaa8" />
+
+- Tạo file index.html: nano ~/bt5-monitor/nginx/html/index.html
 
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/213e6a0d-ba41-4d56-a159-716ef95d3c3a" />
 
+- Tạo Nginx service
+Mở: nano ~/bt5-monitor/docker-compose.yml
+<img width="764" height="939" alt="image" src="https://github.com/user-attachments/assets/f5f83246-b544-4149-977b-805c1a204f1f" />
 
+- Khởi động lại
+cd ~/bt5-monitor
+docker compose up -d
+- sau đó kiểm tra xem đã chạy thành công chưa
+<img width="610" height="276" alt="image" src="https://github.com/user-attachments/assets/9070501a-1c8b-414a-82d6-5aa10b58c603" />
 
+# Nhúng Grafana
+
+- Mở file index.html: nano ~/bt5-monitor/nginx/html/index.html -> thêm iframe Grafana
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/73140903-c80f-4d31-9d30-b77757446c40" />
+
+- kiểm tra xem đã hiện biểu đồ chưa: http://192.168.18.128:8088/
+<img width="957" height="1016" alt="image" src="https://github.com/user-attachments/assets/e17e11b6-7081-48a4-9cf0-df9a72145a42" />
+
+# Export/Import Docker
+- xem các image đang dùng : docker images
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d82fcc6a-77a4-4d6c-a27d-f5f69a7b641b" />
+
+- Tạo thư mục backup: mkdir -p ~/bt5-backup
+<img width="825" height="92" alt="image" src="https://github.com/user-attachments/assets/89d7f5bd-f2a7-4c34-b08b-12386ded9d22" />
+
+- EXPORT TOÀN BỘ IMAGE
+<img width="741" height="179" alt="image" src="https://github.com/user-attachments/assets/bc7ae3fe-0408-4195-8ef9-01f3b7928cd8" />
+
+- KIỂM TRA FILE ĐÃ TẠO: ls -lh ~/bt5-backup
+<img width="815" height="73" alt="image" src="https://github.com/user-attachments/assets/10aa3dd1-b299-428d-ac88-962693bb3189" />
+
+- NÉN FILE: gzip ~/bt5-backup/bt5-images.tar
+<img width="915" height="89" alt="image" src="https://github.com/user-attachments/assets/b38d9a65-2b3a-426d-9133-b8d6d37cbc31" />
+
+- DỪNG HỆ THỐNG
+Trong thư mục project:
+cd ~/bt5-monitor
+docker compose down
+Kiểm tra: docker ps
+<img width="1658" height="600" alt="image" src="https://github.com/user-attachments/assets/65631622-b845-4238-b7e0-f43cfbbac3a2" />
+
+- XÓA IMAGE
+  <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/dd19ecae-8e4d-44d9-a9c1-f1f2a747696b" />
+
+-  Load lại từ file nén
+  <img width="1063" height="180" alt="image" src="https://github.com/user-attachments/assets/9f31a4a2-c70e-4611-992c-e3ef05c29a59" />
+- khởi động lại các containers: docker compose -f ~/bt5-monitor/docker-compose.yml up -d
+<img width="1167" height="228" alt="image" src="https://github.com/user-attachments/assets/aacf5d02-7e95-45fd-83a1-cd8502bf4adb" />
+- kiểm tra lại
+- <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/376c8a28-6da2-4117-a01b-6b6e0e95f4f8" />
 
 
 
